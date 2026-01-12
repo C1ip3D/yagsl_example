@@ -128,14 +128,14 @@ public class RobotContainer {
   {
     //named command
     NamedCommands.registerCommand("test", Commands.print("Hello World"));
-    NamedCommands.registerCommand("eleraiseL1", new AutoCoralRaise(6));
-        NamedCommands.registerCommand("eleraiseL2", new AutoCoralRaise(15));
-    NamedCommands.registerCommand("eleraiseL3", new AutoCoralRaise(30));
+    // NamedCommands.registerCommand("eleraiseL1", new AutoCoralRaise(6));
+    //     NamedCommands.registerCommand("eleraiseL2", new AutoCoralRaise(15));
+    // NamedCommands.registerCommand("eleraiseL3", new AutoCoralRaise(30));
 
-    NamedCommands.registerCommand("coralshoot", new AutoCoralShoot());
-    NamedCommands.registerCommand("alignright", new AlignToReefTagRelative(1, drivebase));
-    NamedCommands.registerCommand("alignleft", new AlignToReefTagRelative(0, drivebase));
-    NamedCommands.registerCommand("aligncenter", new AlignToReefTagRelative(2, drivebase));
+    // NamedCommands.registerCommand("coralshoot", new AutoCoralShoot());
+    // NamedCommands.registerCommand("alignright", new AlignToReefTagRelative(1, drivebase));
+    // NamedCommands.registerCommand("alignleft", new AlignToReefTagRelative(0, drivebase));
+    // NamedCommands.registerCommand("aligncenter", new AlignToReefTagRelative(2, drivebase));
 
 
 
@@ -195,9 +195,9 @@ public class RobotContainer {
       //driverXbox.y().whileTrue(new  DriveToTagSimple(drivebase, Robot.lv, 0));
 
       // Reef alignment
-      driverXbox.povRight().onTrue(new AlignToReefTagRelative(1, drivebase).withTimeout(3));
-      driverXbox.povLeft().onTrue(new AlignToReefTagRelative(0, drivebase).withTimeout(3));
-      driverXbox.povUp().onTrue(new AlignToReefTagRelative(2, drivebase).withTimeout(3));
+      // driverXbox.povRight().onTrue(new AlignToReefTagRelative(1, drivebase).withTimeout(3));
+      // driverXbox.povLeft().onTrue(new AlignToReefTagRelative(0, drivebase).withTimeout(3));
+      // driverXbox.povUp().onTrue(new AlignToReefTagRelative(2, drivebase).withTimeout(3));
 
 
     }
