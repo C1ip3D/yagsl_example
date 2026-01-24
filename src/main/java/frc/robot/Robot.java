@@ -151,7 +151,7 @@ public class Robot extends TimedRobot
     System.out.println("final ALLIANCE : " + robotalliance);
     System.out.println("final ALLIANCE LOCATION : " + alliancelocation);
 
-    intakesensor = new DigitalInput(1);
+    // intakesensor = new DigitalInput(1);
 
     // motor_intake_one = new SparkMax(23, MotorType.kBrushless);
      //motor_arm = new SparkFlex(31, MotorType.kBrushless);
@@ -691,11 +691,11 @@ public class Robot extends TimedRobot
     //targetRotations = inchesdist * 0.395;
     targetRotations = inchesdist * 1.82;
     //motor_elevator_one_encoder.setPosition(0); // Reset encoder before starting
-    motor_elevator_one_pidc.reset();
+    // motor_elevator_one_pidc.reset();
     movingToTarget = true;
     System.out.println( " : targetRotations : " + targetRotations);
-    System.out.println( " : CURRENT POSITION : " + motor_elevator_one_encoder.getPosition());
-    System.out.println( " : ERRORVAL  : " + (targetRotations - motor_elevator_one_encoder.getPosition()));
+    // System.out.println( " : CURRENT POSITION : " + motor_elevator_one_encoder.getPosition());
+    // System.out.println( " : ERRORVAL  : " + (targetRotations - motor_elevator_one_encoder.getPosition()));
 }
 
   public double scale(double value, double inMin, double inMax, double outMin, double outMax) {
