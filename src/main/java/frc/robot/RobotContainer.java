@@ -34,7 +34,7 @@ import swervelib.SwerveInputStream;
 public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  final         CommandXboxController driverXbox = new CommandXboxController(0);
+  final  CommandXboxController driverXbox = new CommandXboxController(0);
   // The robot's subsystems and commands are defined here...
   public final SwerveSubsystem       drivebase  = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                                 "swerve"));
@@ -128,14 +128,14 @@ public class RobotContainer {
   {
     //named command
     NamedCommands.registerCommand("test", Commands.print("Hello World"));
-    NamedCommands.registerCommand("eleraiseL1", new AutoCoralRaise(6));
-        NamedCommands.registerCommand("eleraiseL2", new AutoCoralRaise(15));
-    NamedCommands.registerCommand("eleraiseL3", new AutoCoralRaise(30));
+    // NamedCommands.registerCommand("eleraiseL1", new AutoCoralRaise(6));
+        // NamedCommands.registerCommand("eleraiseL2", new AutoCoralRaise(15));
+    // NamedCommands.registerCommand("eleraiseL3", new AutoCoralRaise(30));
 
-    NamedCommands.registerCommand("coralshoot", new AutoCoralShoot());
-    NamedCommands.registerCommand("alignright", new AlignToReefTagRelative(1, drivebase));
-    NamedCommands.registerCommand("alignleft", new AlignToReefTagRelative(0, drivebase));
-    NamedCommands.registerCommand("aligncenter", new AlignToReefTagRelative(2, drivebase));
+    // NamedCommands.registerCommand("coralshoot", new AutoCoralShoot());
+    // NamedCommands.registerCommand("alignright", new AlignToReefTagRelative(1, drivebase));
+    // NamedCommands.registerCommand("alignleft", new AlignToReefTagRelative(0, drivebase));
+    // NamedCommands.registerCommand("aligncenter", new AlignToReefTagRelative(2, drivebase));
 
 
 

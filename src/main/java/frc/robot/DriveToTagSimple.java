@@ -16,8 +16,8 @@ public class DriveToTagSimple extends Command {
     private final SwerveSubsystem swerve;
     private final LimelightVision vision;
 
-    private final PIDController strafePID = new PIDController(0.03, 0, 0.002);
-    private final PIDController rotationPID = new PIDController(0.015, 0, 0.001);
+    private final PIDController strafePID = new PIDController(0.7, 0, 0);
+    private final PIDController rotationPID = new PIDController(0.4, 0, 0.01);
     private final double stopDistanceMeters;
     private double startTime;
 
