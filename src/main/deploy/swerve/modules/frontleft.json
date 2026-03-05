@@ -1,33 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-{
-  "drive": {
-    "type": "sparkmax_neo",
-    "id": 1,
-    "canbus": null
-  },
-  "angle": {
-    "type": "sparkmax_neo",
-    "id": 2,
-    "canbus": null
-  },
-  "encoder": {
-    "type": "cancoder",
-    "id": 9,
-    "canbus": null
-  },
-  "inverted": {
-    "drive": false,
-    "angle": true
-  },
-  "absoluteEncoderOffset": 11.250,
-  "location": {
-    "front": 12,
-    "left": 12
-  }
-=======
-=======
->>>>>>> Stashed changes
 <<<<<<< HEAD
 {
   "drive": {
@@ -37,7 +7,7 @@
   },
   "angle": {
     "type": "sparkmax_neo",
-    "id": 2,
+    "id": 1,
     "canbus": null
   },
   "encoder": {
@@ -54,35 +24,4 @@
     "front": 12,
     "left": 12
   }
-=======
-{
-  "drive": {
-    "type": "sparkmax_neo",
-    "id": 1,
-    "canbus": null
-  },
-  "angle": {
-    "type": "sparkmax_neo",
-    "id": 2,
-    "canbus": null
-  },
-  "encoder": {
-    "type": "cancoder",
-    "id": 9,
-    "canbus": null
-  },
-  "inverted": {
-    "drive": false,
-    "angle": true
-  },
-  "absoluteEncoderOffset": 11.250,
-  "location": {
-    "front": 12,
-    "left": 12
-  }
->>>>>>> 8c6a5401812b480b14095df6c251cda5effa3501
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
