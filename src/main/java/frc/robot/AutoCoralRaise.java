@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package frc.robot;
 
 
@@ -94,6 +95,8 @@ public class AutoCoralRaise extends Command {
 }
 
 =======
+=======
+>>>>>>> Stashed changes
 
 package frc.robot;
 
@@ -190,4 +193,7 @@ public class AutoCoralRaise extends Command {
 }
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

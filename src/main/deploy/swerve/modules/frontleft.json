@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 {
   "drive": {
     "type": "sparkmax_neo",
@@ -25,6 +26,8 @@
     "left": 12
   }
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 {
   "drive": {
@@ -78,5 +81,8 @@
     "left": 12
   }
 >>>>>>> 8c6a5401812b480b14095df6c251cda5effa3501
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

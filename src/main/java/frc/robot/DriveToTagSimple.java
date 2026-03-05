@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package frc.robot;
 // SIMPLE CODE: Drive toward AprilTag using Limelight only (no field layout)
 // Aligns and drives to tag without knowing field position
@@ -77,6 +78,8 @@ public class DriveToTagSimple extends Command {
 } 
 
 =======
+=======
+>>>>>>> Stashed changes
 
 package frc.robot;
 // SIMPLE CODE: Drive toward AprilTag using Limelight only (no field layout)
@@ -156,4 +159,7 @@ public class DriveToTagSimple extends Command {
 } 
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
