@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
   "drive": {
     "type": "sparkmax_neo",
@@ -23,4 +24,59 @@
     "front": 12,
     "left": 12
   }
+=======
+<<<<<<< HEAD
+{
+  "drive": {
+    "type": "sparkmax_neo",
+    "id": 1,
+    "canbus": null
+  },
+  "angle": {
+    "type": "sparkmax_neo",
+    "id": 2,
+    "canbus": null
+  },
+  "encoder": {
+    "type": "cancoder",
+    "id": 9,
+    "canbus": null
+  },
+  "inverted": {
+    "drive": true,
+    "angle": true
+  },
+  "absoluteEncoderOffset": 11.250,
+  "location": {
+    "front": 12,
+    "left": 12
+  }
+=======
+{
+  "drive": {
+    "type": "sparkmax_neo",
+    "id": 1,
+    "canbus": null
+  },
+  "angle": {
+    "type": "sparkmax_neo",
+    "id": 2,
+    "canbus": null
+  },
+  "encoder": {
+    "type": "cancoder",
+    "id": 9,
+    "canbus": null
+  },
+  "inverted": {
+    "drive": false,
+    "angle": true
+  },
+  "absoluteEncoderOffset": 11.250,
+  "location": {
+    "front": 12,
+    "left": 12
+  }
+>>>>>>> 8c6a5401812b480b14095df6c251cda5effa3501
+>>>>>>> Stashed changes
 }
