@@ -69,17 +69,17 @@ public class Robot extends TimedRobot
   private Timer disabledTimer;
 
   // Setup the variables
-  public static SparkMax motor_intake_one;
-  public static SparkMax motor_intake_two;
-  public static SparkMax motor_intake_three;
-  public static SparkMax motor_elevator_one;
-  public static SparkMax motor_elevator_two;
+  // public static SparkMax motor_intake_one;
+  // public static SparkMax motor_intake_two;
+  // public static SparkMax motor_intake_three;
+  // public static SparkMax motor_elevator_one;
+  // public static SparkMax motor_elevator_two;
 
   // STUFF FOR ELEVATOR PID CONTROLLER FIXED POSITIONS
-  public static RelativeEncoder motor_elevator_one_encoder;
-  public static RelativeEncoder motor_elevator_two_encoder;
-  public static PIDController motor_elevator_one_pidc = new PIDController(0.2, 0, 0.001); // Tune PID values
-  public static PIDController motor_elevator_two_pidc = new PIDController(0.2, 0, 0.001); // Tune PID values
+  // public static RelativeEncoder motor_elevator_one_encoder;
+  // public static RelativeEncoder motor_elevator_two_encoder;
+  // public static PIDController motor_elevator_one_pidc = new PIDController(0.2, 0, 0.001); // Tune PID values
+  // public static PIDController motor_elevator_two_pidc = new PIDController(0.2, 0, 0.001); // Tune PID values
   public static double WHEEL_CIRCUMFERENCE = 0.159593026;
   public static double GEAR_RATIO = 40;
   public static double INIT_ENCODER ;
@@ -88,17 +88,17 @@ public class Robot extends TimedRobot
 
   // ALGAE
 
-  public static SparkFlex algae_raise_motor;
-  public static SparkFlex algae_spin_motor;
-  public static SparkClosedLoopController  algae_raise_motor_pidc; // Tune PID values
-  public static RelativeEncoder  algae_raise_motor_encoder;
+  // public static SparkFlex algae_raise_motor;
+  // public static SparkFlex algae_spin_motor;
+  // public static SparkClosedLoopController  algae_raise_motor_pidc; // Tune PID values
+  // public static RelativeEncoder  algae_raise_motor_encoder;
 
             
-  private XboxController operator_controller;
-  private Joystick new_joystick;
-  private DigitalInput intakesensor;
-  private SparkFlex motor_arm;
-  private SparkMax motor_algae;
+  // private XboxController operator_controller;
+  // private Joystick new_joystick;
+  // private DigitalInput intakesensor;
+  // private SparkFlex motor_arm;
+  // private SparkMax motor_algae;
   public static int alliancelocation = 999;
   public static String robotalliance = "NONE";
   private boolean wasTeleop = false;
@@ -152,38 +152,38 @@ public class Robot extends TimedRobot
     System.out.println("final ALLIANCE : " + robotalliance);
     System.out.println("final ALLIANCE LOCATION : " + alliancelocation);
 
-    intakesensor = new DigitalInput(1);
+    // intakesensor = new DigitalInput(1);
 
-    motor_intake_one = new SparkMax(23, MotorType.kBrushless);
-     //motor_arm = new SparkFlex(31, MotorType.kBrushless);
+   // motor_intake_one = new SparkMax(23, MotorType.kBrushless);
+    //motor_arm = new SparkFlex(31, MotorType.kBrushless);
     //motor_algae = new SparkMax(24, MotorType.kBrushless);
-    motor_elevator_one = new SparkMax(21, MotorType.kBrushless); // SparkMax is flashed to CAN id 9
-    motor_elevator_two = new SparkMax(22, MotorType.kBrushless); // SparkMax is flashed to CAN id
-    SparkMaxConfig config_ = new SparkMaxConfig();        
-    config_.idleMode(SparkBaseConfig.IdleMode.kBrake);
-    motor_intake_one.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
-    motor_elevator_one.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
-    motor_elevator_two.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
-    //motor_algae.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
-    //motor_arm.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+   // motor_elevator_one = new SparkMax(21, MotorType.kBrushless); // SparkMax is flashed to CAN id 9
+    // motor_elevator_two = new SparkMax(22, MotorType.kBrushless); // SparkMax is flashed to CAN id
+    // SparkMaxConfig config_ = new SparkMaxConfig();        
+    // config_.idleMode(SparkBaseConfig.IdleMode.kBrake);
+    // // motor_intake_one.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    // motor_elevator_one.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    // motor_elevator_two.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    // //motor_algae.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    // //motor_arm.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     
-    motor_elevator_one_encoder = motor_elevator_one.getEncoder();
-    motor_elevator_two_encoder = motor_elevator_two.getEncoder();
-    System.out.println("ELE1 POSITION BEFORE SET 0:" + motor_elevator_one_encoder.getPosition());  
-    System.out.println("ELE2 POSITION BEFORE SET 0:" + motor_elevator_two_encoder.getPosition());  
-    System.out.flush();
-    System.out.flush();
-    motor_elevator_one_encoder.setPosition(0);
-    motor_elevator_two_encoder.setPosition(0);  
-    Timer.delay(0.02);
-    System.out.println("ELE1 POSITION AFTER SET 0:" + motor_elevator_one_encoder.getPosition());  
-    System.out.println("ELE2 POSITION AFTER SET 0:" + motor_elevator_two_encoder.getPosition());  
-    System.out.flush();
-    System.out.flush();
-    INIT_ENCODER = motor_elevator_one_encoder.getPosition(); // INITIAL ENCOER VALUE
-    movingToTarget = false;
-    // Operator Controller Port
-    operator_controller = new XboxController(1);
+    // motor_elevator_one_encoder = motor_elevator_one.getEncoder();
+    // motor_elevator_two_encoder = motor_elevator_two.getEncoder();
+    // System.out.println("ELE1 POSITION BEFORE SET 0:" + motor_elevator_one_encoder.getPosition());  
+    // System.out.println("ELE2 POSITION BEFORE SET 0:" + motor_elevator_two_encoder.getPosition());  
+    // System.out.flush();
+    // System.out.flush();
+    // motor_elevator_one_encoder.setPosition(0);
+    // motor_elevator_two_encoder.setPosition(0);  
+    // Timer.delay(0.02);
+    // System.out.println("ELE1 POSITION AFTER SET 0:" + motor_elevator_one_encoder.getPosition());  
+    // System.out.println("ELE2 POSITION AFTER SET 0:" + motor_elevator_two_encoder.getPosition());  
+    // System.out.flush();
+    // System.out.flush();
+    // INIT_ENCODER = motor_elevator_one_encoder.getPosition(); // INITIAL ENCOER VALUE
+    // movingToTarget = false;
+    // // Operator Controller Port
+    // operator_controller = new XboxController(1);
 
 
 
@@ -194,22 +194,22 @@ public class Robot extends TimedRobot
 
     // ALGAE SETUP
 
-    algae_spin_motor = new SparkFlex(32, MotorType.kBrushless); // SparkMax is flashed to CAN id
+   // algae_spin_motor = new SparkFlex(32, MotorType.kBrushless); // SparkMax is flashed to CAN id
     
     
-    algae_raise_motor = new SparkFlex(31, MotorType.kBrushless); // SparkMax is flashed to CAN id
-    SparkFlexConfig config2_ = new SparkFlexConfig();        
-    config2_.idleMode(SparkBaseConfig.IdleMode.kBrake);
-    ClosedLoopConfig pidConfig2 = new ClosedLoopConfig();
-    pidConfig2.pid(0.5,0,0);
-    config2_.apply(pidConfig2);
-    algae_raise_motor.configure(config2_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    // algae_raise_motor = new SparkFlex(31, MotorType.kBrushless); // SparkMax is flashed to CAN id
+    // SparkFlexConfig config2_ = new SparkFlexConfig();        
+    // config2_.idleMode(SparkBaseConfig.IdleMode.kBrake);
+    // ClosedLoopConfig pidConfig2 = new ClosedLoopConfig();
+    // pidConfig2.pid(0.5,0,0);
+    // config2_.apply(pidConfig2);
+    // algae_raise_motor.configure(config2_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
 
-    algae_raise_motor_encoder = algae_raise_motor.getEncoder();
-    algae_raise_motor_encoder.setPosition(0.0); // Assume arm is hanging down at boot
+    // algae_raise_motor_encoder = algae_raise_motor.getEncoder();
+    // algae_raise_motor_encoder.setPosition(0.0); // Assume arm is hanging down at boot
 
     // Set up onboard PID constants
-    algae_raise_motor_pidc = algae_raise_motor.getClosedLoopController();
+    // algae_raise_motor_pidc = algae_raise_motor.getClosedLoopController();
 
     Timer timeralg = new Timer();
     timeralg.reset();
@@ -218,14 +218,14 @@ public class Robot extends TimedRobot
 
     System.out.println("RAISING ARM START <<<<<<<<<<<<<<<<<<<<<<<");
     // Run the motor for 2 seconds
-    while (timeralg.get() < 2.0) {
-     // System.out.println("RAISING ARM RUNNING <<<<<<<<<<<<<<<<<<<<<<<");
+    // while (timeralg.get() < 2.0) {
+    //  // System.out.println("RAISING ARM RUNNING <<<<<<<<<<<<<<<<<<<<<<<");
 
-        algae_raise_motor.set(0.15);
-    }
+    //     algae_raise_motor.set(0.15);
+    // }
     
-    // Optionally stop the motor after 2 seconds
-    algae_raise_motor.set(0.04); // feed forward    
+    // // Optionally stop the motor after 2 seconds
+    // algae_raise_motor.set(0.04); // feed forward    
 
     System.out.println("RAISING ARM END <<<<<<<<<<<<<<<<<<<<<<<<<");
     // Left Hand Joystick Port
@@ -424,18 +424,18 @@ public class Robot extends TimedRobot
   /**
    * This function is called periodically during operator control.
    */
-  @Override
-  public void teleopPeriodic()
-  {
+  // @Override
+  // public void teleopPeriodic()
+  // {
     // Get the controller axis and button values ONCE and save to vars
-    double rawaxis1 = operator_controller.getRawAxis(1);
+    // double rawaxis1 = operator_controller.getRawAxis(1);
     ///////////////////
-    double rawaxis2 = operator_controller.getRawAxis(2);
-    double rawaxis3 = operator_controller.getRawAxis(3);
-    double rawaxis5 = operator_controller.getRawAxis(5);
-    boolean leftbumperbutton = operator_controller.getLeftBumperButton();
-    boolean rightbumperbutton = operator_controller.getRightBumperButton();
-    int opPOV = operator_controller.getPOV();
+    // double rawaxis2 = operator_controller.getRawAxis(2);
+    // double rawaxis3 = operator_controller.getRawAxis(3);
+    // double rawaxis5 = operator_controller.getRawAxis(5);
+    // boolean leftbumperbutton = operator_controller.getLeftBumperButton();
+    // boolean rightbumperbutton = operator_controller.getRightBumperButton();
+    // int opPOV = operator_controller.getPOV();
 
     /* 
     System.out.println("rawxis1 : " + rawaxis1 +
@@ -463,69 +463,69 @@ public class Robot extends TimedRobot
    // System.out.println("opPOV : " + opPOV);
 
 
-    if (leftbumperbutton)
-    {
-      //System.out.println("PRESSED LEFT bumper ");
-      algae_spin_motor.set(0.2);
-    }else if (rightbumperbutton)
-    {
-      //System.out.println("PRESSED RIGHT bumper ");
-      algae_spin_motor.set(-0.2);
-    }else 
-    {
-      algae_spin_motor.set(0);
-    }
+    // if (leftbumperbutton)
+    // {
+    //   //System.out.println("PRESSED LEFT bumper ");
+    //   algae_spin_motor.set(0.2);
+    // }else if (rightbumperbutton)
+    // {
+    //   //System.out.println("PRESSED RIGHT bumper ");
+    //   algae_spin_motor.set(-0.2);
+    // }else 
+    // {
+    //   algae_spin_motor.set(0);
+    // }
 
 
-    if (rawaxis5 > 0.05)
-    {
-      //System.out.println("PRESSED RIGHT JOYST POSITIVE ");
-      algae_raise_motor.set(-0.02);
-    }else if (rawaxis5 < -0.05) // UP
-    {
-      //System.out.println("PRESSED RIGHT JOYST NEGETIVE ");
-      algae_raise_motor.set(0.15);
-    }else 
-    {
-      //System.out.println("ALGAE ARM STOP ");
-      algae_raise_motor.set(0.04); // MIGHT NEED FEED FORWARD
-    }
+    // if (rawaxis5 > 0.05)
+    // {
+    //   //System.out.println("PRESSED RIGHT JOYST POSITIVE ");
+    //   algae_raise_motor.set(-0.02);
+    // }else if (rawaxis5 < -0.05) // UP
+    // {
+    //   //System.out.println("PRESSED RIGHT JOYST NEGETIVE ");
+    //   algae_raise_motor.set(0.15);
+    // }else 
+    // {
+    //   //System.out.println("ALGAE ARM STOP ");
+    //   algae_raise_motor.set(0.04); // MIGHT NEED FEED FORWARD
+    // }
 
 
 
-    /* 
-    if (opPOV == 0) {
-         algae_raise_motor_pidc.setReference(3.0, ControlType.kPosition, ClosedLoopSlot.kSlot0); // Use PID slot 0
-        //algae_raise_motor_pidc.setReference(3,ControlType.kPosition);   
-    }
-    */
+    // /* 
+    // if (opPOV == 0) {
+    //      algae_raise_motor_pidc.setReference(3.0, ControlType.kPosition, ClosedLoopSlot.kSlot0); // Use PID slot 0
+    //     //algae_raise_motor_pidc.setReference(3,ControlType.kPosition);   
+    // }
+    // */
 
 
-        // CORAL INTAKE
-    /////////////////
-    if(intakesensor.get() == true)
-    {
-      if(rawaxis2 > 0)
-      {
-      motor_intake_one.set(0.2); // CORAL INTAKE SPEED
-      }else
-      {
-              motor_intake_one.set(0);
+    //     // CORAL INTAKE
+    // /////////////////
+    // if(intakesensor.get() == true)
+    // {
+    //   if(rawaxis2 > 0)
+    //   {
+    //   motor_intake_one.set(0.2); // CORAL INTAKE SPEED
+    //   }else
+    //   {
+    //           motor_intake_one.set(0);
 
-      }
-    }else
-    {
-      motor_intake_one.set(0);
-    } 
+    //   }
+    // }else
+    // {
+    //   motor_intake_one.set(0);
+    // } 
 
-    // CORAL SHOOT
-    if(rawaxis3 > 0)
-    {
-      motor_intake_one.set(0.28); // CORAL SHOOT SPEED
-      //motor_intake_one.set(rawaxis3/4);
-         // System.out.println("shoot speed : " + 0.1);
+    // // CORAL SHOOT
+    // if(rawaxis3 > 0)
+    // {
+    //   motor_intake_one.set(0.28); // CORAL SHOOT SPEED
+    //   //motor_intake_one.set(rawaxis3/4);
+    //      // System.out.println("shoot speed : " + 0.1);
 
-    } 
+    // } 
 
     /* 
     if (rightbumperbutton)
@@ -589,54 +589,54 @@ public class Robot extends TimedRobot
     
     // TEST TEST TEST
     
-   if (operator_controller.getXButton() == true) { // HOME = X BUTTON
-     moveDistance(0.0); // 
-   }
+  //  if (operator_controller.getXButton() == true) { // HOME = X BUTTON
+  //    moveDistance(0.0); // 
+  //  }
 
 
-   //L! MAGUC NUMBER IS 25.25 INCH
-   if (operator_controller.getYButton() == true) { // L1 = Y BUTTON
-    moveDistance(6); // Move 1 meter
-  }
+  //  //L! MAGUC NUMBER IS 25.25 INCH
+  //  if (operator_controller.getYButton() == true) { // L1 = Y BUTTON
+  //   moveDistance(6); // Move 1 meter
+  // }
 
-  if (operator_controller.getBButton() == true) { // L2 = B BUTTON
-    moveDistance(15); // Move 1 meter
-  }
+  // if (operator_controller.getBButton() == true) { // L2 = B BUTTON
+  //   moveDistance(15); // Move 1 meter
+  // }
 
-  if (operator_controller.getAButton() == true) { // L3 / TESTING L1 FOR NOW ***********************
-    moveDistance(31); // Move 1 meter
-  }
+  // if (operator_controller.getAButton() == true) { // L3 / TESTING L1 FOR NOW ***********************
+  //   moveDistance(31); // Move 1 meter
+  // }
 
   // Run PID control if we are actively moving to a target
   
-  if (movingToTarget)
-  {
-    double currentPosition = motor_elevator_one_encoder.getPosition();
-    double error = targetRotations - currentPosition;
-    double rawpidoutput = motor_elevator_one_pidc.calculate(currentPosition, targetRotations) ;
-    //double pidOutput =  MathUtil.clamp(rawpidoutput,-0.15,0.25);
+  // if (movingToTarget)
+  // {
+  //   double currentPosition = motor_elevator_one_encoder.getPosition();
+  //   double error = targetRotations - currentPosition;
+  //   double rawpidoutput = motor_elevator_one_pidc.calculate(currentPosition, targetRotations) ;
+  //   //double pidOutput =  MathUtil.clamp(rawpidoutput,-0.15,0.25);
 
-    double pidOutput = scale(rawpidoutput,-1,1,-0.15,0.3);
-    //System.out.println("RAW PID : " + rawpidoutput + " : CLAMPED : " + pidOutput);
+  //   double pidOutput = scale(rawpidoutput,-1,1,-0.15,0.3);
+  //   //System.out.println("RAW PID : " + rawpidoutput + " : CLAMPED : " + pidOutput);
     //motor_elevator_two.set(pidOutput);
     //motor_elevator_one.set(pidOutput);
 
 
     
-    if(Math.signum(error) > 0) // UP SPEED SET
-    {
-      motor_elevator_two.set(0.25); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
-      motor_elevator_one.set(0.25); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
+    // if(Math.signum(error) > 0) // UP SPEED SET
+    // {
+    //   motor_elevator_two.set(0.25); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
+    //   motor_elevator_one.set(0.25); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
 
-      //System.out.println("ELE SPEED GOIN UP: " + motor_elevator_one.get());
+    //   //System.out.println("ELE SPEED GOIN UP: " + motor_elevator_one.get());
 
-    }else                       // DOWN SPEED SET
-    {
-      motor_elevator_two.set(-0.2); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
-      motor_elevator_one.set(-0.2); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
-      //System.out.println("ELE SPEED GOIN DOWN : " + motor_elevator_one.get());
+    // }else                       // DOWN SPEED SET
+    // {
+    //   motor_elevator_two.set(-0.2); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
+    //   motor_elevator_one.set(-0.2); // NO NEGETIVE NEEDED FOR ONE MOTOR DUE TO DESIGN
+    //   //System.out.println("ELE SPEED GOIN DOWN : " + motor_elevator_one.get());
 
-    }
+    // }
       
       
 
@@ -644,11 +644,11 @@ public class Robot extends TimedRobot
     //motor_elevator_two.set(0.3 * Math.signum(error)); // Apply PID output
 
 
-    SmartDashboard.putNumber("Motor Position", currentPosition);
-    SmartDashboard.putNumber("Target Position", targetRotations);
-    SmartDashboard.putNumber("Motor Power", pidOutput);
-    SmartDashboard.putNumber("Error", error);
-    SmartDashboard.putNumber("TEST VALUE", 55);
+    // SmartDashboard.putNumber("Motor Position", currentPosition);
+    // SmartDashboard.putNumber("Target Position", targetRotations);
+    // SmartDashboard.putNumber("Motor Power", pidOutput);
+    // SmartDashboard.putNumber("Error", error);
+    // SmartDashboard.putNumber("TEST VALUE", 55);
 
 
     /* 
@@ -661,81 +661,81 @@ public class Robot extends TimedRobot
 
 
     // Stop if close enough OR if the PID output changes direction (prevents overshoot)
-    if ((Math.abs(error) < 0.1) && targetRotations == 0) 
-    {
-      System.out.println("AT HOME HEIGHT - SETTING 0 FEED FORWARD");
-      System.out.println( " : errorval : " + error + ": currentPosition : " + motor_elevator_one_encoder.getPosition()) ;
+  //   if ((Math.abs(error) < 0.1) && targetRotations == 0) 
+  //   {
+  //     System.out.println("AT HOME HEIGHT - SETTING 0 FEED FORWARD");
+  //     System.out.println( " : errorval : " + error + ": currentPosition : " + motor_elevator_one_encoder.getPosition()) ;
 
-        motor_elevator_two.set(0.0);
-        motor_elevator_one.set(0.0);
-        //System.out.println("ELE SPEED : " + motor_elevator_one.get());
-
-
-        movingToTarget = false;
-    } else if((Math.abs(error) < 0.1)){
-      System.out.println("REACHED : " + targetRotations);
-      System.out.println( " : errorval : " + error + ": currentPosition : " + motor_elevator_one_encoder.getPosition()) ;
-
-        motor_elevator_two.set(0.02); // FEED FORWARD
-        motor_elevator_one.set(0.02);
-        //System.out.println("ELE SPEED : " + motor_elevator_one.get());
-
-        movingToTarget = false;
+  //       motor_elevator_two.set(0.0);
+  //       motor_elevator_one.set(0.0);
+  //       //System.out.println("ELE SPEED : " + motor_elevator_one.get());
 
 
-    }
-  }}
+  //       movingToTarget = false;
+  //   } else if((Math.abs(error) < 0.1)){
+  //     System.out.println("REACHED : " + targetRotations);
+  //     System.out.println( " : errorval : " + error + ": currentPosition : " + motor_elevator_one_encoder.getPosition()) ;
+
+  //       motor_elevator_two.set(0.02); // FEED FORWARD
+  //       motor_elevator_one.set(0.02);
+  //       //System.out.println("ELE SPEED : " + motor_elevator_one.get());
+
+  //       movingToTarget = false;
+
+
+  //   }
+  // }}
         
 
-  public void moveDistance(double inchesdist) {
-    //targetRotations = (meters / WHEEL_CIRCUMFERENCE) * GEAR_RATIO;
-    //targetRotations = inchesdist * 0.395;
-    targetRotations = inchesdist * 1.82;
-    //motor_elevator_one_encoder.setPosition(0); // Reset encoder before starting
-    motor_elevator_one_pidc.reset();
-    movingToTarget = true;
-    System.out.println( " : targetRotations : " + targetRotations);
-    System.out.println( " : CURRENT POSITION : " + motor_elevator_one_encoder.getPosition());
-    System.out.println( " : ERRORVAL  : " + (targetRotations - motor_elevator_one_encoder.getPosition()));
-}
+//   public void moveDistance(double inchesdist) {
+//     //targetRotations = (meters / WHEEL_CIRCUMFERENCE) * GEAR_RATIO;
+//     //targetRotations = inchesdist * 0.395;
+//     targetRotations = inchesdist * 1.82;
+//     //motor_elevator_one_encoder.setPosition(0); // Reset encoder before starting
+//     motor_elevator_one_pidc.reset();
+//     movingToTarget = true;
+//     System.out.println( " : targetRotations : " + targetRotations);
+//     System.out.println( " : CURRENT POSITION : " + motor_elevator_one_encoder.getPosition());
+//     System.out.println( " : ERRORVAL  : " + (targetRotations - motor_elevator_one_encoder.getPosition()));
+// }
 
-  public double scale(double value, double inMin, double inMax, double outMin, double outMax) {
-    return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-  }
+  // public double scale(double value, double inMin, double inMax, double outMin, double outMax) {
+  //   return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+  // }
     
     
 
 
 
-  @Override
-  public void testInit()
-  {
-    // Cancels all running commands at the start of test mode.
-    CommandScheduler.getInstance().cancelAll();
-    m_robotContainer.setDriveMode();
-  }
+  // @Override
+  // public void testInit()
+  // {
+  //   // Cancels all running commands at the start of test mode.
+  //   CommandScheduler.getInstance().cancelAll();
+  //   m_robotContainer.setDriveMode();
+  // }
 
   /**
    * This function is called periodically during test mode.
    */
-  @Override
-  public void testPeriodic()
-  {
-  }
+  // @Override
+  // public void testPeriodic()
+  // {
+  // }
 
-  /**
-   * This function is called once when the robot is first started up.
-   */
-  @Override
-  public void simulationInit()
-  {
-  }
+  // /**
+  //  * This function is called once when the robot is first started up.
+  //  */
+  // @Override
+  // public void simulationInit()
+  // {
+  // }
 
-  /**
-   * This function is called periodically whilst in simulation.
-   */
-  @Override
-  public void simulationPeriodic()
-  {
-  }
+  // /**
+  //  * This function is called periodically whilst in simulation.
+  //  */
+  // @Override
+  // public void simulationPeriodic()
+  // {
+  // }
 }

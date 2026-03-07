@@ -26,33 +26,27 @@ public class AutoCoralShoot extends Command {
     }
 
 
-    @Override
-    public void initialize() {
-        timer.reset();
-        timer.start();
-        Robot.motor_intake_one.set(0.28);
-    }
+    // @Override
+    // public void initialize() {
+    //     timer.reset();
+    //     timer.start();
+    //     Robot.motor_intake_one.set(0.28);
+    // }
 
-    @Override
-    public void execute() {
-      // System.out.println("IN CORAL SHOOT");
-    }
+    // @Override
+    // public void execute() {
+    //   // System.out.println("IN CORAL SHOOT");
+    // }
 
-    @Override
-    public boolean isFinished() {
-        return timer.hasElapsed(7);
-    }
+    // @Override
+    // public boolean isFinished() {
+    //     return timer.hasElapsed(7);
+    // }
 
-    @Override
-    public void end(boolean interrupted) {
-        Robot.motor_intake_one.set(0);
+    // @Override
+    // public void end(boolean interrupted) {
+    //     Robot.motor_intake_one.set(0);
 
-    }
+    // }
 }
 
-
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

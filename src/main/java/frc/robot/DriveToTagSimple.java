@@ -77,8 +77,3 @@ public class DriveToTagSimple extends Command {
 } 
 
 
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
