@@ -85,6 +85,10 @@ public class Robot extends TimedRobot
   public static double targetRotations = 0;
   public static boolean movingToTarget = false;
 
+  public static SparkMax shootMotor_1;
+  public static SparkMax shootMotor_2;
+
+
   // ALGAE
 
   // public static SparkFlex algae_raise_motor;
@@ -151,20 +155,26 @@ public class Robot extends TimedRobot
     System.out.println("final ALLIANCE : " + robotalliance);
     System.out.println("final ALLIANCE LOCATION : " + alliancelocation);
 
-    intakesensor = new DigitalInput(1);
+    // intakesensor = new DigitalInput(1);
 
     // motor_intake_one = new SparkMax(23, MotorType.kBrushless);
      //motor_arm = new SparkFlex(31, MotorType.kBrushless);
     //motor_algae = new SparkMax(24, MotorType.kBrushless);
     // motor_elevator_one = new SparkMax(21, MotorType.kBrushless); // SparkMax is flashed to CAN id 9
     // motor_elevator_two = new SparkMax(22, MotorType.kBrushless); // SparkMax is flashed to CAN id
+    shootMotor_1 = new SparkMax(21,MotorType.kBrushless);
+    shootMotor_2 = new SparkMax(22,MotorType.kBrushless);
+
     SparkMaxConfig config_ = new SparkMaxConfig();        
     config_.idleMode(SparkBaseConfig.IdleMode.kBrake);
+
     // motor_intake_one.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     // motor_elevator_one.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     // motor_elevator_two.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     //motor_algae.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     //motor_arm.configure(config_, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    shootMotor_1.configure(config_,SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    shootMotor_2.configure(config_,SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     
     // motor_elevator_one_encoder = motor_elevator_one.getEncoder();
     // motor_elevator_two_encoder = motor_elevator_two.getEncoder();
@@ -436,9 +446,19 @@ public class Robot extends TimedRobot
     boolean rightbumperbutton = operator_controller.getRightBumperButton();
     int opPOV = operator_controller.getPOV();
 
+
+    if(rawaxis1 > 0.1){
+      double powerStandardize = (10*(rawaxis1-0.1))*0.09;
+      shootMotor_1.set(powerStandardize);
+      shootMotor_2.set(-powerStandardize);
+    }else{
+      shootMotor_1.set(0);
+      shootMotor_2.set(0);
+    }
+
 //     /* 
 //     System.out.println("rawxis1 : " + rawaxis1 +
-//      " : Sensor.get() : " + intakesensor.get() + 
+//      " : Sensor.get() : " + w.get() + 
 //      " : ELE1 POS : " + motor_elevator_one_encoder.getPosition() +
 //      " : ELE2 POS : " + motor_elevator_two_encoder.getPosition());
     
@@ -474,6 +494,8 @@ public class Robot extends TimedRobot
 //     {
 //       algae_spin_motor.set(0);
 //     }
+
+      
 
 
 //     if (rawaxis5 > 0.05)
@@ -684,20 +706,20 @@ public class Robot extends TimedRobot
 
   //   }
   // }}
-        
+  }
 
   public void moveDistance(double inchesdist) {
-    //targetRotations = (meters / WHEEL_CIRCUMFERENCE) * GEAR_RATIO;
-    //targetRotations = inchesdist * 0.395;
-    targetRotations = inchesdist * 1.82;
-    //motor_elevator_one_encoder.setPosition(0); // Reset encoder before starting
-    motor_elevator_one_pidc.reset();
-    movingToTarget = true;
-    System.out.println( " : targetRotations : " + targetRotations);
-    System.out.println( " : CURRENT POSITION : " + motor_elevator_one_encoder.getPosition());
-    System.out.println( " : ERRORVAL  : " + (targetRotations - motor_elevator_one_encoder.getPosition()));
+//     //targetRotations = (meters / WHEEL_CIRCUMFERENCE) * GEAR_RATIO;
+//     //targetRotations = inchesdist * 0.395;
+//     targetRotations = inchesdist * 1.82;
+//     //motor_elevator_one_encoder.setPosition(0); // Reset encoder before starting
+//     // motor_elevator_one_pidc.reset();
+//     movingToTarget = true;
+//     System.out.println( " : targetRotations : " + targetRotations);
+//     System.out.println( " : CURRENT POSITION : " + motor_elevator_one_encoder.getPosition());
+//     System.out.println( " : ERRORVAL  : " + (targetRotations - motor_elevator_one_encoder.getPosition()));
 }
-
+  
   public double scale(double value, double inMin, double inMax, double outMin, double outMax) {
     return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
   }
